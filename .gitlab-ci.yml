@@ -15,6 +15,6 @@ publish:
   stage: publish
   image: python:3.7-stretch
   script:
-  - pip install tox
+  - pip install tox twine
   - tox
   - twine upload -u ${PYPI_USER} -p ${PYPI_PASSWORD} .tox/dist/*
