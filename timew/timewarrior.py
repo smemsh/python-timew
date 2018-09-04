@@ -1,34 +1,18 @@
 import json
 from datetime import datetime, timedelta
-from exceptions import TimewarriorError
-from shutil import which
 from subprocess import PIPE, Popen
 
+from .exceptions import TimeWarriorError
 
-class Timewarrior:
+
+class TimeWarrior:
     """
-    Documentation
+
     """
 
-    def __init__(self, intervals=[]):
-        self.timew = '/usr/bin/timew'
-
-    def get(self, id):
-        return self.__export()[id - 1]
-
-    def get_id(self, tags=None):
-        ids = self.get_ids(tags)
-        if len(ids) == 0:
-            return None
-        return self.get_ids(tags)[0]
-
-    def get_ids(self, tags=None):
-        ids = []
-        data = self.__export()
-        for i, task in enumerate(data):
-            if set(tags).issubset(set(task.get('tags', []))):
-                ids.append(i + 1)
-        return ids
+    def __init__(self,  bin='/usr/bin/timew', simulate=False):
+        self.bin = bin
+        self.simulate = simulate
 
     def cancel(self):
         """If there is an open interval, it is abandoned."""
@@ -88,7 +72,6 @@ class Timewarrior:
 
         Raises:
             TimewarriorError: Timew command errors
-
         """
         args = ['track']
         args.append(self.__strfdatetime(start_date))
@@ -124,7 +107,9 @@ class Timewarrior:
         """ Execute a given timewarrior command with arguments
         Returns a 2-tuple of stdout and stderr (respectively).
         """
-        command = [self.timew] + list(args)
+        command = [self.bin] + list(args)
+        if(self.simulate):
+            return command
 
         try:
             proc = Popen(
@@ -135,10 +120,10 @@ class Timewarrior:
             stdout, stderr = proc.communicate()
         except OSError as e:
             if e.errno == errno.ENOENT:
-                raise OSError("Unable to find the '%s' command-line tool." % (self.timew))
+                raise OSError("Unable to find the '%s' command-line tool." % (self.bin))
             raise
 
         if proc.returncode != 0:
-            raise TimewarriorError(command, stderr.strip().decode(), proc.returncode)
+            raise TimeWarriorError(command, stderr.strip().decode(), proc.returncode)
 
         return stdout.strip().decode(), stderr.strip().decode()

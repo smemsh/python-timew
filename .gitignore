@@ -1,1 +1,10 @@
+.coverage
+.direnv/
+.eggs/
+.pytest_cache/
+.tox/
+
 **/__pycache__
+build/
+htmlcov/
+timew.egg-info

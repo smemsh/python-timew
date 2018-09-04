@@ -1,0 +1,118 @@
+import time
+from collections import namedtuple
+from copy import deepcopy
+from datetime import datetime, timedelta
+from subprocess import PIPE, Popen, check_output
+
+from shellescape import quote
+
+
+class Interval:
+    def __init__(self, start, end, tags, saved=False, color=None, gap=False):
+        self.start = start
+        self.end = end
+        self.tags = tags
+        self.color = color
+        self.gap = gap
+
+        self.__saved_start = None
+        self.__saved_end = None
+        self.__saved_tags = None
+        if saved:
+            self.__saved_start = deepcopy(self.start)
+            self.__saved_end = deepcopy(self.end)
+            self.__saved_tags = self.tags[:] if self.tags else None
+
+    def __lt__(self, other):
+        return self.start < other.start
+
+    def __repr__(self):
+        return '<start: %s, end: %s, tags: %s, weight: %s, color: %s, saved: %s>' % (
+            self.start, self.end, self.tags, self.weight(), self.color, bool(self.__saved_start))
+
+    @property
+    def start(self):
+        return self.__start
+
+    @start.setter
+    def start(self, start):
+        start_date = start if type(start) is datetime else datetime.strptime(
+            start, "%Y%m%dT%H%M%SZ")
+        self.__start = deepcopy(start_date)
+
+    @property
+    def end(self):
+        return self.__end
+
+    @end.setter
+    def end(self, end):
+        if end is None:
+            self.__end = None
+        else:
+            end_date = end if type(end) is datetime else datetime.strptime(
+                end, "%Y%m%dT%H%M%SZ")
+            self.__end = deepcopy(end_date)
+
+    @property
+    def tags(self):
+        return self.__tags
+
+    @tags.setter
+    def tags(self, tags):
+        self.__tags = tags[:] if tags else []
+
+    def save(self, id, simulate=False):
+        # Gaps do not get saved
+        if self.gap:
+            return
+
+        tw_cmds = []
+        tags = ""
+        for tag in self.tags:
+            tags += " %s" % quote(tag)
+
+        if self.__saved_start is None:
+            tw_cmds.append("timew track %sZ - %sZ %s" %
+                           ((self.start - timedelta(
+                               seconds=time.localtime().tm_gmtoff)).isoformat(),
+                            (self.end - timedelta(
+                                seconds=time.localtime().tm_gmtoff)).isoformat(), tags))
+            self.__saved_start = deepcopy(self.start)
+            self.__saved_end = deepcopy(self.end)
+            self.__saved_tags = self.tags[:]
+
+        elif self.__saved_start != self.start:
+            tw_cmds.append("timew move @%s %s" % (id, self.start.isoformat()))
+
+        if self.end is not None:
+            if self.__saved_end is None:
+                tw_cmds.append("timew stop")
+            if self.__saved_end is not None:
+                delta = (self.end - self.__saved_end).total_seconds()
+                if delta > 0:
+                    tw_cmds.append("timew lengthen @%s %dseconds" % (id, abs(delta)))
+                if delta < 0:
+                    tw_cmds.append("timew shorten @%s %dseconds" % (id, abs(delta)))
+
+        if not simulate:
+            for tw_cmd in tw_cmds:
+                check_output(tw_cmd.split())
+
+        self.__saved_start = deepcopy(self.start)
+        self.__saved_end = deepcopy(self.end)
+        self.__saved_tags = self.tags[:]
+
+        return (tw_cmds)
+
+    def saved(self):
+        if self.__saved_start != self.start:
+            return False
+        if self.__saved_end != self.end:
+            return False
+        if self.__saved_tags != self.tags:
+            return False
+        return True
+
+    def weight(self):
+        duration = (self.end - self.start).seconds
+        return (duration / (24*60*60))

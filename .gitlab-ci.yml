@@ -1,0 +1,20 @@
+image: python:3.7-stretch
+
+stages:
+- test
+- publish
+
+test:
+  stage: test
+  script:
+  - pip install tox
+  - tox
+
+publish:
+  only: [tags]
+  stage: publish
+  image: python:3.7-stretch
+  script:
+  - pip install tox
+  - tox
+  - twine upload -u ${PYPI_USER} -p ${PYPI_PASSWORD} .tox/dist/*
