@@ -2,7 +2,7 @@
 
 from setuptools import find_packages, setup
 
-setup(setup_requires=['pbr'],
+setup(setup_requires=['pbr', 'setuptools-markdown'],
       pbr=True,
       packages=find_packages('timew'),
       )

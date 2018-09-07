@@ -1,6 +1,16 @@
 CHANGES
 =======
 
+* Update README
+* Update README
+
+0.0.3
+-----
+
+* Release 0.0.3
+* Release --help
+* Update README
+* Fix args
 * Fix commands + update tests
 * Add data structures for Duration and Interval
 * Remove sphinx dependency from requirements and add to dev-requirements
