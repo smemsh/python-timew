@@ -1,6 +1,7 @@
 CHANGES
 =======
 
+* Fix commands + update tests
 * Add data structures for Duration and Interval
 * Remove sphinx dependency from requirements and add to dev-requirements
 
