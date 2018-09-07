@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 from subprocess import PIPE, Popen
 
 from .exceptions import TimeWarriorError
+from .interval import Interval
 
 
 class TimeWarrior:
@@ -16,86 +17,163 @@ class TimeWarrior:
 
     def cancel(self):
         """If there is an open interval, it is abandoned."""
-        self.__execute('cancel')
+        return self.__execute('cancel')
 
-    def cont(self, id, date):
+    def cont(self, id):
         """Resumes tracking of closed intervals.
 
         Args:
+            id (int): The Timewarrior id to be continued
 
         """
-        self.__execute('continue', str(id), date)
+        return self.__execute('continue @%d' % id)
 
     def delete(self, id):
-        self.__execute('delete', '@%d' % id)
+        """Deletes an interval.
+
+        Args:
+            id (int): The Timewarrior id to be deleted
+        """
+        return self.__execute('delete', '@%d' % id)
 
     def join(self, id1, id2):
-        self.__execute('join', id1, id2)
+        """Joins two intervals, by using the earlier of the two start times,
+        and the later of the two end times, and the combined set of tags.
+
+        Args:
+            id1 (int): The first Timewarrior id to be joined
+            id2 (int): The second Timewarrior id to be joined
+
+        """
+        return self.__execute('join', '@%d @%d' % (id1, id2))
 
     def lengthen(self, id, duration):
-        self.__execute('lengthen', '@%d' % id, duration)
+        """Defer the end date of a closed interval.
 
-    def move(self, id, datetime):
-        self.__execute('move', '@%d' % id, datetime)
+        Args:
+            id (int): The Timewarrior id
+            duration (timew.Duration): The duration to lengthen the interval by
+        """
+        return self.__execute('lengthen', '@%d %s' % (id, str(duration)))
+
+    def move(self, id, time):
+        """Reposition an interval at a new start time.
+
+        Args:
+            id (int): The Timewarrior id
+            time (datetime): The new start time for the interval
+
+        """
+        return self.__execute('move', '@%d' % id, self.__strfdatetime(time))
 
     def shorten(self, id, duration):
-        self.__execute('shorten', '@%d' % id, duration)
+        """Advance the end date of a closed interval.
+
+        Args:
+            id (int): The Timewarrior id
+            duration (timew.Duration): The duration to shorten the interval by
+
+        """
+        return self.__execute('shorten', '@%d %s' % (id, str(duration)))
 
     def split(self, id):
-        self.__execute('split', '@%d' % id)
+        """Splits an interval into two equally sized adjacent intervals,
+        having the same tags.
 
-    def start(self, date=None, tags=None):
-        args = ['start']
-        if(date):
-            args.append(date)
+        Args:
+            id (int): The Timewarrior id to split
+
+        """
+        return self.__execute('split', '@%d' % id)
+
+    def start(self, time=datetime.now(), tags=None):
+        """Begins tracking using the current time with any specified set of tags.
+
+        Args:
+            time (datetime): The time to start the interval
+            tags (list<str>): The list of tags to apply to the interval
+
+        """
+        args = ['start', self.__strfdatetime(time)]
         if(tags):
-            args += tags
-        self.__execute(*args)
+            for tag in tags:
+                args.append('"%s"' % tag)
+
+        return self.__execute(*args)
 
     def stop(self, tags=None):
+        """Stops tracking time. If tags are specified, then they are no longer tracked.
+        If no tags are specified, all tracking stops.
+
+        Args:
+            tags (int): The Timewarrior id
+            tags (list): The list of tags to stop tracking
+
+        """
         args = ['stop']
         if(tags):
-            args.append(tags)
-        self.__execute(*args)
+            for tag in tags:
+                args.append('"%s"' % tag)
+
+        return self.__execute(*args)
 
     def tag(self, id, tags):
-        self.__execute(self, 'tag', '@%d' % id, tags)
+        """Adds a tag to an interval.
 
-    def track(self, start_date, end_date, tags=None):
+        Args:
+            id (int): The Timewarrior id
+            tags (list): The list of tags to add to the interval
+        """
+        args = ['tag', '@%d' % id]
+        for tag in tags:
+            args.append('"%s"' % tag)
+
+        return self.__execute(*args)
+
+    def track(self, start_time, end_time=None, tags=None):
         """The track command is used to add tracked time in the past.
            Perhaps you forgot to record time, or are just filling in old entries.
 
         Args:
-            start_date (datetime): The task start time.
-            end_date (datetime or timedelta, optional): The task end time, or task duration.
+            start_time (datetime): The task start time.
+            end_time (datetime, optional): The task end time. (required if duration not given)
+            duration (timew.Timedelta, optional): The task duration. (required if task not given)
             tags (list of string): The tags
 
         Raises:
             TimewarriorError: Timew command errors
         """
         args = ['track']
-        args.append(self.__strfdatetime(start_date))
 
-        if type(end_date) is timedelta:
-            args.append('for')
-            args.append(self.__strftimedelta(end_date))
-        else:
-            args.append('to')
-            args.append(self.__strfdatetime(end_date))
+        interval = Interval(start_time=start_time, end_time=end_time)
+        args.append(str(interval))
 
-        if(tags):
-            args += tags
+        if tags:
+            for tag in tags:
+                args.append('"%s"' % tag)
 
-        self.__execute(*args)
+        return self.__execute(*args)
 
     def untag(self, id, tag):
-        self.__execute(args)
+        """Remove a tag from an interval
+
+        Args:
+            id (int): The Timewarrior id
+            tag (str): The tag to remove
+        """
+        return self.__execute(args)
 
     def __strftimedelta(self, duration):
-        return 'PT%dS' % duration.total_seconds()
+        if type(duration) is timedelta:
+            return 'PT%dS' % duration.total_seconds()
+        else:
+            return duration
 
     def __strfdatetime(self, dt):
-        return dt.strftime('%Y%m%dT%H%M%S')
+        if type(dt) is datetime:
+            return dt.strftime('%Y%m%dT%H%M%S')
+        else:
+            return dt
 
     def __export(self):
         stdout, stderr = self.__execute('export')
@@ -109,7 +187,7 @@ class TimeWarrior:
         """
         command = [self.bin] + list(args)
         if(self.simulate):
-            return command
+            return ' '.join(command)
 
         try:
             proc = Popen(
