@@ -1,6 +1,19 @@
 CHANGES
 =======
 
+* Add data structures for Duration and Interval
+* Remove sphinx dependency from requirements and add to dev-requirements
+
+0.0.2
+-----
+
+* Fix release process
+
+0.0.1
+-----
+
+* Release --help
+* Prepare code for first release
 * Add codebeat badge
 * Add LICENSE
 * Initial commit
