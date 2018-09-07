@@ -59,7 +59,7 @@ Ended                 40:53
 Total               0:03:53
 
 >>> timew.track(start_time=datetime(2018, 9, 7, 11, 0, 0), end_time=datetime(2018, 9, 7, 12, 0, 0))
-'Tracking "from 20180907T110000 - 20180907T120000"
+Tracking "from 20180907T110000 - 20180907T120000"
 Started 2018-09-07T13:42:27
 Current                  27
 Total               0:00:00
