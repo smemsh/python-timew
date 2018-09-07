@@ -45,7 +45,7 @@ class TimeWarrior:
             id2 (int): The second Timewarrior id to be joined
 
         """
-        return self.__execute('join', '@%d @%d' % (id1, id2))
+        return self.__execute('join', '@%d' % id1, '@%d' % id2)
 
     def lengthen(self, id, duration):
         """Defer the end date of a closed interval.
@@ -54,7 +54,7 @@ class TimeWarrior:
             id (int): The Timewarrior id
             duration (timew.Duration): The duration to lengthen the interval by
         """
-        return self.__execute('lengthen', '@%d %s' % (id, str(duration)))
+        return self.__execute('lengthen', '@%d' % id, '%s' % str(duration))
 
     def move(self, id, time):
         """Reposition an interval at a new start time.
@@ -74,7 +74,7 @@ class TimeWarrior:
             duration (timew.Duration): The duration to shorten the interval by
 
         """
-        return self.__execute('shorten', '@%d %s' % (id, str(duration)))
+        return self.__execute('shorten', '@%d' % id, '%s' % str(duration))
 
     def split(self, id):
         """Splits an interval into two equally sized adjacent intervals,
