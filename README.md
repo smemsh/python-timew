@@ -6,13 +6,13 @@ For this API to work, you need [Timewarrior](https://taskwarrior.org/docs/timewa
 
 Installation is easy from the [Python Package Index](https://pypi.org/project/timew/)
 
-~~~bash
+```bash
 pip install timew
-~~~
+```
 
 ## Examples ##
 
-~~~python
+```bash
 >>> from timew import TimeWarrior
 
 >>> timew = TimeWarrior()
@@ -50,7 +50,7 @@ Split @1
 Tracking "my tag"
 Started 2018-09-07T13:37:00
 Current               40:22
-Total               0:03:22'
+Total               0:03:22
 
 >>> timew.stop()
 Recorded "my tag"
@@ -63,4 +63,4 @@ Total               0:03:53
 Started 2018-09-07T13:42:27
 Current                  27
 Total               0:00:00
-~~~
+```
