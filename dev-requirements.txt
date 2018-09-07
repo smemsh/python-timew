@@ -12,8 +12,6 @@ chardet==3.0.4            # via requests
 click==6.7                # via pip-tools
 coverage==4.5.1           # via pytest-cov
 docutils==0.14            # via sphinx
-factory-boy==2.11.1
-faker==0.8.14             # via factory-boy
 first==2.0.1              # via pip-tools
 idna==2.6                 # via requests
 imagesize==1.0.0          # via sphinx
@@ -23,12 +21,14 @@ markupsafe==1.0           # via jinja2
 more-itertools==4.1.0     # via pytest
 packaging==17.1           # via sphinx
 parso==0.2.0              # via jedi
+pbr==4.2.0
 pip-tools==2.0.2
 pkginfo==1.4.2            # via twine
 pluggy==0.6.0             # via pytest, tox
 py==1.5.3                 # via pytest, tox
 pycodestyle==2.4.0
 pygments==2.2.0           # via sphinx
+pypandoc==1.4             # via setuptools-markdown
 pyparsing==2.2.0          # via packaging
 pytest-cov==2.5.1
 pytest==3.5.1
@@ -36,13 +36,14 @@ python-dateutil==2.7.3
 pytz==2018.4              # via babel
 requests-toolbelt==0.8.0  # via twine
 requests==2.18.4          # via requests-toolbelt, sphinx, twine
+setuptools-markdown==0.2
 six==1.11.0
 snowballstemmer==1.2.1    # via sphinx
 sphinx==1.7.4
 sphinxcontrib-websupport==1.0.1  # via sphinx
-text-unidecode==1.2       # via faker
 tox==3.0.0
 tqdm==4.25.0              # via twine
 twine==1.11.0
 urllib3==1.22             # via requests
 virtualenv==15.2.0        # via tox
+wheel==0.31.1             # via pypandoc

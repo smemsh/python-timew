@@ -1,12 +1,14 @@
 -r requirements.txt
 
-factory_boy
 # autocompletion for emacs
 jedi
+
+pbr
 pip-tools
 pycodestyle
 pytest
 pytest-cov
+setuptools-markdown
 sphinx
 tox
 twine
