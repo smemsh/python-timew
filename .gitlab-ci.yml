@@ -7,7 +7,7 @@ stages:
 test:
   stage: test
   script:
-  - pip install tox
+  - pip install -r dev-requirements.txt
   - tox
 
 publish:
@@ -15,6 +15,6 @@ publish:
   stage: publish
   image: python:3.7-stretch
   script:
-  - pip install tox twine
+  - pip install -r dev-requirements.txt
   - tox
   - twine upload -u ${PYPI_USER} -p ${PYPI_PASSWORD} .tox/dist/*
