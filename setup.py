@@ -2,6 +2,9 @@
 
 from setuptools import find_packages, setup
 
+with open('README.md') as f:
+    long_description = f.read()
+
 setup(
     setup_requires=['setuptools-scm'],
     name='timew',
@@ -9,6 +12,7 @@ setup(
     author='Tjaart van der Walt',
     author_email='tjaart@tjaart.org',
     summary='Python bindings for your timewarrior database',
+    long_description=long_description,
     long_description_content_type="text/markdown",
     project_urls={
         'Homepage': 'https://tjaart.gitlab.io/python-timew',
