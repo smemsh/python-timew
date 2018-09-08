@@ -19,7 +19,6 @@ setup(
     packages=find_packages('timew'),
     classifiers=[
         'Development Status :: 4 - Beta',
-        'Environment:: Console',
         'Intended Audience:: Developers',
         'Operating System:: POSIX',
         'Programming Language :: Python :: 3'],
