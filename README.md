@@ -10,6 +10,10 @@ Installation is easy from the [Python Package Index](https://pypi.org/project/ti
 pip install timew
 ```
 
+## API Documentation ##
+[Read the docs](http://tjaart.gitlab.io/python-timew)
+
+
 ## Examples ##
 
 ```bash
