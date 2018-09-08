@@ -27,7 +27,7 @@ master_doc = 'index'
 language = None
 exclude_patterns = []
 pygments_style = 'sphinx'
-html_theme = "classic"
+html_theme = "sphinx_rtd_theme"
 htmlhelp_basename = 'TimewarriorAPIdoc'
 todo_include_todos = True
 
