@@ -3,13 +3,13 @@
 from setuptools import find_packages, setup
 
 setup(
-    setup_requires=['setuptools-markdown', 'setuptools-scm'],
+    setup_requires=['setuptools-scm'],
     name='timew',
     use_scm_version=True,
     author='Tjaart van der Walt',
     author_email='tjaart@tjaart.org',
     summary='Python bindings for your timewarrior database',
-    long_description_markdown_filename='README.md',
+    long_description_content_type="text/markdown",
     project_urls={
         'Homepage': 'https://tjaart.gitlab.io/python-timew',
         'Bug Tracker': 'https://gitlab.com/tjaart/python-timew/issues',
