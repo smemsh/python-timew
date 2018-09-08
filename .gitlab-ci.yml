@@ -2,6 +2,7 @@ image: python:3.7-stretch
 
 stages:
 - test
+- pages
 - publish
 
 test:
@@ -10,10 +11,19 @@ test:
   - pip install -r dev-requirements.txt
   - tox
 
+pages:
+  stage: publish
+  only: [master]
+  script:
+  - pip install -r dev-requirements.txt
+  - tox -e docs
+  artifacts:
+    paths:
+    - public
+
 publish:
   only: [tags]
   stage: publish
-  image: python:3.7-stretch
   script:
   - pip install -r dev-requirements.txt
   - tox

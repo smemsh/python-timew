@@ -10,5 +10,7 @@ pytest
 pytest-cov
 setuptools-markdown
 sphinx
+sphinx_rtd_theme
+sphinxcontrib-apidoc
 tox
 twine

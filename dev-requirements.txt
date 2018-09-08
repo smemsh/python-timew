@@ -39,7 +39,9 @@ requests==2.18.4          # via requests-toolbelt, sphinx, twine
 setuptools-markdown==0.2
 six==1.11.0
 snowballstemmer==1.2.1    # via sphinx
+sphinx-rtd-theme==0.4.1
 sphinx==1.7.4
+sphinxcontrib-apidoc==0.2.1
 sphinxcontrib-websupport==1.0.1  # via sphinx
 tox==3.0.0
 tqdm==4.25.0              # via twine
