@@ -18,7 +18,7 @@ setup(
     },
     packages=find_packages('timew'),
     classifiers=[
-        'Development Status :: 4 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment:: Console',
         'Intended Audience:: Developers',
         'Operating System:: POSIX',
