@@ -19,8 +19,8 @@ setup(
     packages=find_packages('timew'),
     classifiers=[
         'Development Status :: 4 - Beta',
-        'Intended Audience:: Developers',
-        'Operating System:: POSIX',
+        'Intended Audience :: Developers',
+        'Operating System :: POSIX',
         'Programming Language :: Python :: 3'],
     keywords='timewarrior',
     license='MIT'
