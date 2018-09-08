@@ -28,7 +28,6 @@ language = None
 exclude_patterns = []
 pygments_style = 'sphinx'
 html_theme = "classic"
-html_static_path = ['_static']
 htmlhelp_basename = 'TimewarriorAPIdoc'
 todo_include_todos = True
 
