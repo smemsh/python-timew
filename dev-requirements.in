@@ -8,6 +8,7 @@ pip-tools
 pycodestyle
 pytest
 pytest-cov
+setuptools-scm
 setuptools-markdown
 sphinx
 sphinx_rtd_theme
