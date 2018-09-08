@@ -5,6 +5,9 @@ from setuptools import find_packages, setup
 with open('README.md') as f:
     long_description = f.read()
 
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
+
 setup(
     setup_requires=['setuptools-scm'],
     name='timew',
@@ -12,6 +15,7 @@ setup(
     author='Tjaart van der Walt',
     author_email='tjaart@tjaart.org',
     description='Python bindings for your timewarrior database',
+    install_requires=requirements,
     long_description=long_description,
     long_description_content_type="text/markdown",
     project_urls={
