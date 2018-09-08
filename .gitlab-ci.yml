@@ -2,7 +2,6 @@ image: python:3.7-stretch
 
 stages:
 - test
-- pages
 - publish
 
 test:
