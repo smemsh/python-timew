@@ -11,7 +11,7 @@ setup(
     use_scm_version=True,
     author='Tjaart van der Walt',
     author_email='tjaart@tjaart.org',
-    summary='Python bindings for your timewarrior database',
+    description='Python bindings for your timewarrior database',
     long_description=long_description,
     long_description_content_type="text/markdown",
     project_urls={
