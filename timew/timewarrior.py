@@ -111,9 +111,12 @@ class TimeWarrior:
 
         """
         args = ['stop']
-        if(tags):
-            for tag in tags:
-                args.append('"%s"' % tag)
+        if tags:
+            if isinstance(tags, type(list())):
+                for tag in tags:
+                    args.append('"%s"' % tag)
+            else:
+                args.append(f"@{tags}")
 
         return self.__execute(*args)
 
