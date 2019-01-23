@@ -24,7 +24,7 @@ setup(
         'Documentation': 'https://gitlab.com/tjaart/python-timew',
         'Source Code': 'https://gitlab.com/tjaart/python-timew'
     },
-    packages=find_packages('timew'),
+    packages=find_packages(),#should return ['timew','tests']
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
