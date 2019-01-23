@@ -54,6 +54,8 @@ def test_stop(timew):
     assert timew.stop() == '/usr/bin/timew stop'
     assert timew.stop(tags=['my tag1', 'my tag2']) \
         == '/usr/bin/timew stop "my tag1" "my tag2"'
+    assert timew.stop(tags=3) \
+        == '/usr/bin/timew stop @3'
 
 
 def test_tag(timew):
