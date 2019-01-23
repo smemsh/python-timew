@@ -30,6 +30,10 @@ def test_lengthen(timew):
     assert timew.lengthen(1, Duration(timedelta(minutes=30))) \
         == '/usr/bin/timew lengthen @1 PT1800S'
 
+def test_list(timew):
+    assert type(timew.list()) != None
+    assert len(timew.list().split()) == 6
+    assert "from" in timew.list()
 
 def test_move(timew):
     assert timew.move(5, datetime(2018, 8, 15, 9, 0, 0)) \
