@@ -11,7 +11,7 @@ class TimeWarrior:
 
     """
 
-    def __init__(self,  bin='/usr/bin/timew', simulate=False):
+    def __init__(self,  bin='timew', simulate=False):
         self.bin = bin
         self.simulate = simulate
 
@@ -75,6 +75,57 @@ class TimeWarrior:
 
         """
         return self.__execute('shorten', '@%d' % id, '%s' % str(duration))
+
+    def list(self, start_time=None, end_time=None):
+        """export the timewarrior entries for interval
+
+        Args:
+            start_time (datetime, optional): The task start time. (start of today if not given)
+            end_time (datetime, optional): The task end time. (required if duration not given, end of today if not given)
+
+        Returns a list of database entries formatted like the following
+        [
+        {"id" : 1,"start":"20190123T092300Z","tags":["watering new plants","gardening"]},
+        {"id" : 2,"start":"20190123T085000Z","end":"20190123T092256Z","tags":["helped plant roses","gardening"]}
+        ]
+        the above contains a started (but not ended) entry with id=1; and an ended entry with id=2
+        """
+
+        if not start_time:
+            now = datetime.now()
+            start_time = datetime(now.year,now.month,now.day)
+            end_time = datetime(now.year,now.month,now.day,23,59,59)
+
+        interval = Interval(start_time=start_time, end_time=end_time)
+        cmd = f'export {interval}'
+        out = self.__execute(*(cmd.split()))
+
+        if self.simulate:
+            return out
+        data = json.loads(out[0])
+
+        data.reverse()
+        counter = 1
+        for d in data:
+            d["id"] = counter
+            counter += 1
+        return data
+
+    def summary(self, start_time=None, end_time=None):
+        """export the timewarrior entries for interval
+
+        Args:
+            start_time (datetime, optional): The task start time. (start of today if not given)
+            end_time (datetime, optional): The task end time. (required if duration not given, end of today if not given)
+
+        Returns a list of database entries formatted like the following
+        [
+        {"id" : 1,"start":"20190123T092300Z","tags":["watering new plants","gardening"]},
+        {"id" : 2,"start":"20190123T085000Z","end":"20190123T092256Z","tags":["helped plant roses","gardening"]}
+        ]
+        the above contains a started (but not ended) entry with id=1; and an ended entry with id=2
+        """
+        return self.list(start_time,end_time)
 
     def split(self, id):
         """Splits an interval into two equally sized adjacent intervals,
