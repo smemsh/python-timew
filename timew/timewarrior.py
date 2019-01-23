@@ -76,7 +76,7 @@ class TimeWarrior:
         """
         return self.__execute('shorten', '@%d' % id, '%s' % str(duration))
 
-    def list(self, start_time=None, end_time=None):
+    def list(self, start_time=None, end_time=datetime.now()):
         """export the timewarrior entries for interval
 
         Args:
