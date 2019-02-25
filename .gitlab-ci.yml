@@ -9,21 +9,14 @@ test:3.7:
   stage: test
   script:
   - pip install -r dev-requirements.txt
-  - tox
+  - tox -- --cov=timew -v -s
 
 test:3.6:
   image: python:3.6
   stage: test
   script:
   - pip install -r dev-requirements.txt
-  - tox
-
-test:3.5:
-  image: python:3.5
-  stage: test
-  script:
-  - pip install -r dev-requirements.txt
-  - tox
+  - tox -- --cov=timew -v -s
 
 pages:
   stage: publish
