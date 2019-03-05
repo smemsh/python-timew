@@ -9,14 +9,15 @@ test:3.7:
   stage: test
   script:
   - pip install poetry tox
-  - tox -- --cov=pomw -v -s
+  # we use 3.7 to determine the code coverage
+  - tox -- --cov=timew -v -s
 
 test:3.6:
   image: python:3.6
   stage: test
   script:
   - pip install poetry tox
-  - tox -- --cov=pomw -v -s
+  - tox
 
 # pages:
 #   stage: publish
