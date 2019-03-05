@@ -1,4 +1,14 @@
 
+0.0.22 / 2019-03-04
+===================
+
+  * Merge branch '7-popen-does-not-accept-intervals-arguments-with-spaces' into 'master'
+  * Pass arguments as list instead of string
+  * Use correct package for code coverage
+  * Merge branch '6-apply-black-code-formatting' into 'master'
+  * Resolve "Apply Black code formatting"
+  * Comment out publishing API docs for now
+
 0.0.21 / 2019-03-04
 ===================
 

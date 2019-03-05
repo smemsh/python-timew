@@ -4,7 +4,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "timew"
-version = "0.0.21"
+version = "0.0.22"
 description = "Python bindings for your timewarrior database"
 authors = [ "Tjaart van der Walt <tjaart@tjaart.org>",]
 license = "MIT"
@@ -28,4 +28,7 @@ sphinx = "^1.8"
 sphinx_rtd_theme = "^0.4.3"
 sphinxcontrib-apidoc = "^0.3.0"
 isort = "^4.3"
-black = {version = "^18.3-alpha.0",allows-prereleases = true}
+
+[tool.poetry.dev-dependencies.black]
+version = "^18.3-alpha.0"
+allows-prereleases = true
