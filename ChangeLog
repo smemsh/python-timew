@@ -1,11 +1,14 @@
 
-0.0.11 / 2019-03-04
+0.0.19 / 2019-03-04
 ===================
 
+  * Update version number for automated release
+  * Release 0.0.11
   * Fix package name
   * Add semver as dev dependency
   * Merge branch '5-convert-project-to-pyproject-toml' into 'master'
   * Resolve "Convert project to pyproject.toml"
+
 CHANGES
 =======
 
