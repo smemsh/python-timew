@@ -10,7 +10,7 @@ from os.path import join
 import semver
 import toml
 
-from pomw.__version__ import __version__
+from timew.__version__ import __version__
 
 PACKAGE = "timew"
 
