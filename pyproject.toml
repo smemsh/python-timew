@@ -4,7 +4,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "timew"
-version = "0.0.20"
+version = "0.0.21"
 description = "Python bindings for your timewarrior database"
 authors = [ "Tjaart van der Walt <tjaart@tjaart.org>",]
 license = "MIT"
