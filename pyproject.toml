@@ -3,7 +3,7 @@ requires = [ "poetry>=0.12",]
 build-backend = "poetry.masonry.api"
 
 [tool.poetry]
-name = "test"
+name = "timew"
 version = "0.0.20"
 description = "Python bindings for your timewarrior database"
 authors = [ "Tjaart van der Walt <tjaart@tjaart.org>",]
