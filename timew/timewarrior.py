@@ -26,7 +26,7 @@ class TimeWarrior:
             id (int): The Timewarrior id to be continued
 
         """
-        return self.__execute("continue @%d" % id)
+        return self.__execute("continue", f"@{id}")
 
     def delete(self, id):
         """Deletes an interval.
@@ -34,7 +34,7 @@ class TimeWarrior:
         Args:
             id (int): The Timewarrior id to be deleted
         """
-        return self.__execute("delete", "@%d" % id)
+        return self.__execute("delete", f"@{id}")
 
     def join(self, id1, id2):
         """Joins two intervals, by using the earlier of the two start times,
@@ -45,7 +45,7 @@ class TimeWarrior:
             id2 (int): The second Timewarrior id to be joined
 
         """
-        return self.__execute("join", "@%d" % id1, "@%d" % id2)
+        return self.__execute("join", f"@{id1}", f"@{id2}")
 
     def lengthen(self, id, duration):
         """Defer the end date of a closed interval.
@@ -54,7 +54,7 @@ class TimeWarrior:
             id (int): The Timewarrior id
             duration (timew.Duration): The duration to lengthen the interval by
         """
-        return self.__execute("lengthen", "@%d" % id, "%s" % str(duration))
+        return self.__execute("lengthen", f"@{id}", f"{str(duration)}")
 
     def move(self, id, time):
         """Reposition an interval at a new start time.
@@ -64,7 +64,7 @@ class TimeWarrior:
             time (datetime): The new start time for the interval
 
         """
-        return self.__execute("move", "@%d" % id, self.__strfdatetime(time))
+        return self.__execute("move", f"@{id}", self.__strfdatetime(time))
 
     def shorten(self, id, duration):
         """Advance the end date of a closed interval.
@@ -74,7 +74,7 @@ class TimeWarrior:
             duration (timew.Duration): The duration to shorten the interval by
 
         """
-        return self.__execute("shorten", "@%d" % id, "%s" % str(duration))
+        return self.__execute("shorten", f"@{id}", f"{str(duration)}")
 
     def list(self, start_time=None, end_time=datetime.now()):
         """export the timewarrior entries for interval
@@ -135,7 +135,7 @@ class TimeWarrior:
             id (int): The Timewarrior id to split
 
         """
-        return self.__execute("split", "@%d" % id)
+        return self.__execute("split", f"@{id}")
 
     def start(self, time=datetime.now(), tags=None):
         """Begins tracking using the current time with any specified set of tags.
@@ -148,7 +148,7 @@ class TimeWarrior:
         args = ["start", self.__strfdatetime(time)]
         if tags:
             for tag in tags:
-                args.append('"%s"' % tag)
+                args.append(f'"{tag}"')
 
         return self.__execute(*args)
 
@@ -165,7 +165,7 @@ class TimeWarrior:
         if tags:
             if isinstance(tags, type(list())):
                 for tag in tags:
-                    args.append('"%s"' % tag)
+                    args.append(f'"{tag}"')
             else:
                 args.append(f"@{tags}")
 
@@ -178,9 +178,9 @@ class TimeWarrior:
             id (int): The Timewarrior id
             tags (list): The list of tags to add to the interval
         """
-        args = ["tag", "@%d" % id]
+        args = ["tag", f"@{id}"]
         for tag in tags:
-            args.append('"%s"' % tag)
+            args.append(f'"{tag}"')
 
         return self.__execute(*args)
 
@@ -200,11 +200,11 @@ class TimeWarrior:
         args = ["track"]
 
         interval = Interval(start_time=start_time, end_time=end_time)
-        args.append(str(interval))
+        args += interval.args
 
         if tags:
             for tag in tags:
-                args.append('"%s"' % tag)
+                args.append(f'"{tag}"')
 
         return self.__execute(*args)
 
@@ -241,14 +241,14 @@ class TimeWarrior:
         """
         command = [self.bin] + list(args)
         if self.simulate:
-            return " ".join(command)
+            return command
 
         try:
             proc = Popen(command, stdout=PIPE, stderr=PIPE)
             stdout, stderr = proc.communicate()
         except OSError as e:
             if e.errno == errno.ENOENT:
-                raise OSError("Unable to find the '%s' command-line tool." % (self.bin))
+                raise OSError(f"Unable to find the '{self.bin}' command-line tool.")
             raise
 
         if proc.returncode != 0:
