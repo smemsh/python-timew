@@ -28,23 +28,30 @@ class Interval:
         if type(end_time) is str:
             end_time = parse(end_time)
 
-        if(duration and not re.match("\\d+[dDhHmMsS]", duration)):
+        if duration and not re.match("\\d+[dDhHmMsS]", duration):
             raise IntervalError('Duration value "%s" is invalid.' % (duration))
 
-        self.__interval = ''
+        self.__interval = ""
 
-        if(start_time and end_time):
-            self.__interval = 'from %s - %s' % (start_time.strftime('%Y%m%dT%H%M%S'),
-                                                end_time.strftime('%Y%m%dT%H%M%S'))
-        elif(start_time and duration):
-            self.__interval = '%s after %s' % (duration,
-                                               start_time.strftime('%Y%m%dT%H%M%S'))
-        elif(end_time and duration):
-            self.__interval = '%s before %s' % (duration,
-                                                end_time.strftime('%Y%m%dT%H%M%S'))
+        if start_time and end_time:
+            self.__interval = "from %s - %s" % (
+                start_time.strftime("%Y%m%dT%H%M%S"),
+                end_time.strftime("%Y%m%dT%H%M%S"),
+            )
+        elif start_time and duration:
+            self.__interval = "%s after %s" % (
+                duration,
+                start_time.strftime("%Y%m%dT%H%M%S"),
+            )
+        elif end_time and duration:
+            self.__interval = "%s before %s" % (
+                duration,
+                end_time.strftime("%Y%m%dT%H%M%S"),
+            )
         else:
             raise IntervalError(
-                'At least 2 arguments need to be supplied: start time, end time, duration')
+                "At least 2 arguments need to be supplied: start time, end time, duration"
+            )
 
     def __repr__(self):
         return self.__interval

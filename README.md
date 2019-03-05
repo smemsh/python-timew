@@ -68,3 +68,16 @@ Started 2018-09-07T13:42:27
 Current                  27
 Total               0:00:00
 ```
+
+## Contributing to timew ##
+
+### Code formatting ###
+
+To avoid [bikeshedding](https://en.wiktionary.org/wiki/bikeshedding) about code formatting, we use the following tools to format our code in a deterministic way:
+
+- [isort](https://github.com/timothycrosley/isort) for organizing imports
+- [Black](https://github.com/ambv/black) for code formatting
+
+Our CI pipeline will fail on code that does not conform. To check your code, run `tox` in your local environment.
+
+We recommend that you configure your favorite editor to run these commands on a shortcut. [Here](https://github.com/tjaartvdwalt/emacs-config/blob/master/load.d/init-python.el#L16-L20) is an example of my Emacs configuration
