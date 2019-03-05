@@ -1,4 +1,9 @@
 
+0.0.20 / 2019-03-04
+===================
+
+  * Install sphinx dependency for gitlab pages
+
 0.0.19 / 2019-03-04
 ===================
 
@@ -9,8 +14,6 @@
   * Merge branch '5-convert-project-to-pyproject-toml' into 'master'
   * Resolve "Convert project to pyproject.toml"
 
-CHANGES
-=======
 
 0.0.8
 -----
