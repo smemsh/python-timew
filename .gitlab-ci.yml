@@ -22,7 +22,7 @@ pages:
   stage: publish
   only: [master]
   script:
-  - pip install poetry tox
+  - pip install poetry tox sphinx
   - tox -e docs
   artifacts:
     paths:
