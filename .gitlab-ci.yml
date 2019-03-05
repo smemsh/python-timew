@@ -18,15 +18,15 @@ test:3.6:
   - pip install poetry tox
   - tox -- --cov=pomw -v -s
 
-pages:
-  stage: publish
-  only: [master]
-  script:
-  - pip install poetry tox sphinx
-  - tox -e docs
-  artifacts:
-    paths:
-    - public
+# pages:
+#   stage: publish
+#   only: [master]
+#   script:
+#   - pip install poetry tox sphinx
+#   - tox -e docs
+#   artifacts:
+#     paths:
+#     - public
 
 publish:
   only: [tags]
