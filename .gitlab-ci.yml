@@ -8,21 +8,21 @@ test:3.7:
   image: python:3.7-stretch
   stage: test
   script:
-  - pip install -r dev-requirements.txt
-  - tox -- --cov=timew -v -s
+  - pip install poetry tox
+  - tox -- --cov=pomw -v -s
 
 test:3.6:
   image: python:3.6
   stage: test
   script:
-  - pip install -r dev-requirements.txt
-  - tox -- --cov=timew -v -s
+  - pip install poetry tox
+  - tox -- --cov=pomw -v -s
 
 pages:
   stage: publish
   only: [master]
   script:
-  - pip install -r dev-requirements.txt
+  - pip install poetry tox
   - tox -e docs
   artifacts:
     paths:
@@ -32,6 +32,5 @@ publish:
   only: [tags]
   stage: publish
   script:
-  - pip install -r dev-requirements.txt
-  - tox
-  - twine upload -u ${PYPI_USER} -p ${PYPI_PASSWORD} .tox/dist/*
+  - pip install poetry
+  - poetry publish --build --username ${PYPI_USER} --password ${PYPI_PASSWORD}
