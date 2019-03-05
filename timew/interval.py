@@ -31,30 +31,38 @@ class Interval:
         if duration and not re.match("\\d+[dDhHmMsS]", duration):
             raise IntervalError('Duration value "%s" is invalid.' % (duration))
 
-        self.__interval = ""
+        self.__args = []
 
         if start_time and end_time:
-            self.__interval = "from %s - %s" % (
-                start_time.strftime("%Y%m%dT%H%M%S"),
-                end_time.strftime("%Y%m%dT%H%M%S"),
-            )
+            self.__args = [
+                "from",
+                f"{start_time.strftime('%Y%m%dT%H%M%S')}",
+                "-",
+                f"{end_time.strftime('%Y%m%dT%H%M%S')}",
+            ]
         elif start_time and duration:
-            self.__interval = "%s after %s" % (
-                duration,
-                start_time.strftime("%Y%m%dT%H%M%S"),
-            )
+            self.__args = [
+                f"{duration}",
+                "after",
+                f"{start_time.strftime('%Y%m%dT%H%M%S')}",
+            ]
         elif end_time and duration:
-            self.__interval = "%s before %s" % (
-                duration,
-                end_time.strftime("%Y%m%dT%H%M%S"),
-            )
+            self.__args = [
+                f"{duration}",
+                "before",
+                f"{end_time.strftime('%Y%m%dT%H%M%S')}",
+            ]
         else:
             raise IntervalError(
                 "At least 2 arguments need to be supplied: start time, end time, duration"
             )
 
+    @property
+    def args(self):
+        return self.__args
+
     def __repr__(self):
-        return self.__interval
+        return " ".join(self.__args)
 
     def __str__(self):
-        return self.__interval
+        return " ".join(self.__args)
