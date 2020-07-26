@@ -105,10 +105,6 @@ class TimeWarrior:
         data = json.loads(out[0])
 
         data.reverse()
-        counter = 1
-        for d in data:
-            d["id"] = counter
-            counter += 1
         return data
 
     def summary(self, start_time=None, end_time=None):
