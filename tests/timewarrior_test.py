@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 
-from pytest import fixture
+from pytest import fixture, raises
 
 from timew import Duration, TimeWarrior
 
@@ -41,6 +41,25 @@ def test_list(timew):
     assert not isinstance(timew.list(), type(None))
     assert len(timew.list()) == 6
     assert "from" in timew.list()
+
+
+def test_modify(timew):
+    assert timew.modify("start", 5, datetime(2018, 8, 15, 9, 0, 0)) == [
+        f"{DEFAULT_BINARY}",
+        "modify",
+        "start",
+        "@5",
+        "20180815T090000",
+    ]
+    assert timew.modify("end", 5, datetime(2018, 8, 15, 9, 0, 0)) == [
+        f"{DEFAULT_BINARY}",
+        "modify",
+        "end",
+        "@5",
+        "20180815T090000",
+    ]
+    with raises(ValueError):
+        timew.modify("strat", 5, datetime(2018, 8, 15, 9, 0, 0))
 
 
 def test_move(timew):
