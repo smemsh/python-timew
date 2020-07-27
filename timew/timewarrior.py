@@ -56,6 +56,18 @@ class TimeWarrior:
         """
         return self.__execute("lengthen", f"@{id}", f"{str(duration)}")
 
+    def modify(self, start_or_end, id, time):
+        """Changes the start or end of an interval.
+
+        Args:
+            start_or_end (str): "start" or "end"
+            id (int): The Timewarrior id
+            time (datetime): The new start or end time for the interval
+        """
+        if start_or_end not in ["start", "end"]:
+            raise ValueError("start_or_end must be either start or end")
+        return self.__execute("modify", start_or_end, f"@{id}", self.__strfdatetime(time))
+
     def move(self, id, time):
         """Reposition an interval at a new start time.
 
