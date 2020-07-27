@@ -66,7 +66,9 @@ class TimeWarrior:
         """
         if start_or_end not in ["start", "end"]:
             raise ValueError("start_or_end must be either start or end")
-        return self.__execute("modify", start_or_end, f"@{id}", self.__strfdatetime(time))
+        return self.__execute(
+            "modify", start_or_end, f"@{id}", self.__strfdatetime(time)
+        )
 
     def move(self, id, time):
         """Reposition an interval at a new start time.
