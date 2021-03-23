@@ -215,7 +215,11 @@ class TimeWarrior:
             id (int): The Timewarrior id
             tag (str): The tag to remove
         """
-        return self.__execute(args)
+        args = ["untag", f"@{id}"]
+        for tag in tags:
+            args.append(f'"{tag}"')
+
+        return self.__execute(*args)
 
     def __strftimedelta(self, duration):
         if type(duration) is timedelta:
