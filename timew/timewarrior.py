@@ -204,7 +204,7 @@ class TimeWarrior:
 
         return self.__execute(*args)
 
-    def untag(self, id, tag):
+    def untag(self, id, tags):
         """Remove a tag from an interval
 
         Args:
