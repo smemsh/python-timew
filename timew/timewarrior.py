@@ -158,7 +158,7 @@ class TimeWarrior:
         args = ["start", self.__strfdatetime(time)]
         if tags:
             for tag in tags:
-                args.append(f'"{tag}"')
+                args.append(f"{tag}")
 
         return self.__execute(*args)
 
@@ -175,7 +175,7 @@ class TimeWarrior:
         if tags:
             if isinstance(tags, type(list())):
                 for tag in tags:
-                    args.append(f'"{tag}"')
+                    args.append(f"{tag}")
             else:
                 args.append(f"@{tags}")
 
@@ -190,7 +190,7 @@ class TimeWarrior:
         """
         args = ["tag", f"@{id}"]
         for tag in tags:
-            args.append(f'"{tag}"')
+            args.append(f"{tag}")
 
         return self.__execute(*args)
 
@@ -214,7 +214,7 @@ class TimeWarrior:
 
         if tags:
             for tag in tags:
-                args.append(f'"{tag}"')
+                args.append(f"{tag}")
 
         return self.__execute(*args)
 
