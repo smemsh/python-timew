@@ -227,7 +227,7 @@ class TimeWarrior:
         """
         args = ["untag", f"@{id}"]
         for tag in tags:
-            args.append(f'"{tag}"')
+            args.append(f'{tag}')
 
         return self.__execute(*args)
 
