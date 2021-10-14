@@ -76,6 +76,36 @@ class TimeWarrior:
         """
         return self.__execute("shorten", f"@{id}", f"{str(duration)}")
 
+    def export(self, start_time=None, end_time=datetime.now(), tags=None):
+        """export the timewarrior entries with optional tags and for optional interval
+
+        Args:
+            start_time (datetime, optional): start of interval to list entries for.
+            end_time (datetime, optional): end of interval to list entries for.
+            tags (list, optional): dump only events with matching tag(s)
+
+        Returns a list of database entries formatted like the following
+        [
+        {"id" : 1,"start":"20190123T092300Z","tags":["watering new plants","gardening"]},
+        {"id" : 2,"start":"20190123T085000Z","end":"20190123T092256Z","tags":["helped plant roses","gardening"]}
+        ]
+        the above contains a started (but not ended) entry with id=1; and an ended entry with id=2
+        """
+
+        interval = None
+        if start_time:
+            interval = Interval(start_time=start_time, end_time=end_time)
+
+        cmd = ['export']
+        if interval: cmd += [interval]
+        if tags: cmd += tags
+
+        out = self.__execute(*cmd)
+        if self.simulate:
+            return out
+
+        return json.loads(out[0])
+
     def list(self, start_time=None, end_time=datetime.now()):
         """export the timewarrior entries for interval
 
