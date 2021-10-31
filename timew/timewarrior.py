@@ -111,7 +111,7 @@ class TimeWarrior:
             interval = Interval(start_time=start_time, end_time=end_time)
 
         cmd = ['export']
-        if interval: cmd += [interval]
+        if interval: cmd += interval.args
         if tags: cmd += tags
 
         out = self.__execute(*cmd)
