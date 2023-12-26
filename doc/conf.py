@@ -1,12 +1,4 @@
-# -*- coding: utf-8 -*-
-# project = 'Timewarrior API'
-# copyright = '2018, Tjaart van der Walt'
-# author = 'Tjaart van der Walt'
-
-# # The short X.Y version
-# version = ''
-# # The full version, including alpha/beta/rc tags
-# release = '1.0.0'
+#
 
 import os
 import sys
