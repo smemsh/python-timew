@@ -14,7 +14,7 @@ extensions = [
     'sphinxcontrib.apidoc',
 ]
 templates_path = ['_templates']
-source_suffix = ['.rst', '.md']
+source_suffix = ['.rst']
 master_doc = 'index'
 language = None
 exclude_patterns = []
