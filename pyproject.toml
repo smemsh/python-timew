@@ -11,7 +11,11 @@ license = "MIT"
 readme = "README.rst"
 repository = "https://gitlab.com/tjaart/python-timew"
 keywords = [ "timewarrior",]
-classifiers = [ "Development Status :: 4 - Beta", "Intended Audience :: Developers", "Operating System :: POSIX",]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Operating System :: POSIX",
+]
 
 [tool.poetry.dependencies]
 python = "^3.6"
