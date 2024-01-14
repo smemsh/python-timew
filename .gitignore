@@ -1,11 +1,8 @@
 .coverage
-.eggs/
 .pytest_cache/
-.tox/
-
 **/__pycache__
 build/
-htmlcov/
-pip-wheel-metadata/
 public/
+dist/
+venv/
 timew.egg-info/
