@@ -7,7 +7,6 @@ name = "timew"
 version = "0.0.22"
 description = "Python bindings for your timewarrior database"
 authors = [ "Tjaart van der Walt <tjaart@tjaart.org>",]
-license = "MIT"
 readme = "README.rst"
 repository = "https://gitlab.com/tjaart/python-timew"
 keywords = [ "timewarrior",]
@@ -15,6 +14,7 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "Operating System :: POSIX",
+    "License :: OSI Approved :: MIT License",
 ]
 
 [tool.poetry.dependencies]
