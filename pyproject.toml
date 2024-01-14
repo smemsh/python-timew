@@ -8,7 +8,6 @@ version = "0.0.22"
 description = "Python bindings for your timewarrior database"
 authors = [{name = "Tjaart van der Walt", email = "tjaart@tjaart.org"},]
 readme = "README.rst"
-repository = "https://gitlab.com/tjaart/python-timew"
 keywords = [ "timewarrior",]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -16,6 +15,13 @@ classifiers = [
     "Operating System :: POSIX",
     "License :: OSI Approved :: MIT License",
 ]
+
+[project.urls]
+Issues = "https://github.com/smemsh/python-timew/issues/"
+Homepage = "https://github.com/smemsh/python-timew/"
+Repository = "https://github.com/smemsh/python-timew/"
+
+###
 
 [tool.poetry.dependencies]
 python = "^3.6"
