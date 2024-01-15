@@ -89,7 +89,7 @@ def test_start(timew):
         f"{DEFAULT_BINARY}",
         "start",
         "20180815T090000",
-        '"my tag"',
+        "my tag",
     ]
 
 
@@ -98,8 +98,8 @@ def test_stop(timew):
     assert timew.stop(tags=["my tag1", "my tag2"]) == [
         f"{DEFAULT_BINARY}",
         "stop",
-        '"my tag1"',
-        '"my tag2"',
+        "my tag1",
+        "my tag2",
     ]
 
 
@@ -108,8 +108,8 @@ def test_tag(timew):
         f"{DEFAULT_BINARY}",
         "tag",
         "@5",
-        '"new tag"',
-        '"another tag"',
+        "new tag",
+        "another tag",
     ]
 
 
@@ -118,8 +118,8 @@ def test_untag(timew):
         f"{DEFAULT_BINARY}",
         "tag",
         "@1",
-        '"new tag"',
-        '"another tag"',
+        "new tag",
+        "another tag",
     ]
 
 
@@ -146,6 +146,6 @@ def test_track(timew):
         "20180815T090000",
         "-",
         "20180815T093000",
-        '"tag 1"',
-        '"tag 2"',
+        "tag 1",
+        "tag 2",
     ]
