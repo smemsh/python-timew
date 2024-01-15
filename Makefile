@@ -13,6 +13,7 @@ REQDEVIN = requirements-dev.in
 REQDEVOUT = requirements-dev.txt
 REQINFILES := $(REQIN) $(REQDEVIN)
 REQOUTFILES := $(REQOUT) $(REQDEVOUT)
+RSTOUTFILES := modules.rst timew*.rst
 
 WHEEL := dist/timew-$(VERSION)-py3-none-any.whl
 SDIST := dist/timew-$(VERSION).tar.gz
@@ -27,6 +28,9 @@ dist: $(WHEEL) $(SDIST)
 
 test: venv $(SDIST) $(WHEEL)
 	pytest
+
+docs: venv $(SYNCFILE) cleandoc
+	cd docs; sphinx-build -b rst -a . api
 
 wheel $(WHEEL): $(SDIST)
 	$(PYBASE) -m build --no-isolation --wheel
@@ -53,9 +57,12 @@ reqs $(REQOUT): $(REQIN)
 devreqs $(REQDEVOUT): $(REQDEVIN)
 	pip-compile -q --no-strip-extras -o $(REQDEVOUT) $(REQINFILES)
 
-clean:
+cleandoc:
+	cd docs; rm -rf api; rm -f $(RSTOUTFILES)
+
+clean: cleandoc
 	rm -rf build venv dist $(LIB).egg-info
 
 rebuild: clean sdist wheel
 
-.PHONY: wheel sdist test sync pkgup reqs devreqs clean rebuild
+.PHONY: wheel sdist test docs sync pkgup reqs devreqs clean cleandoc rebuild

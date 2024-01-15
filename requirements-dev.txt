@@ -72,6 +72,7 @@ sphinx==7.2.6
     # via
     #   -r requirements-dev.in
     #   sphinxcontrib-apidoc
+    #   sphinxcontrib-restbuilder
 sphinxcontrib-apidoc==0.4.0
     # via -r requirements-dev.in
 sphinxcontrib-applehelp==1.0.8
@@ -86,6 +87,8 @@ sphinxcontrib-napoleon==0.7
     # via -r requirements-dev.in
 sphinxcontrib-qthelp==1.0.7
     # via sphinx
+sphinxcontrib-restbuilder==0.3
+    # via -r requirements-dev.in
 sphinxcontrib-serializinghtml==1.1.10
     # via sphinx
 tomli==2.0.1

@@ -2,7 +2,6 @@
 .pytest_cache/
 **/__pycache__
 build/
-public/
 dist/
 venv/
 timew.egg-info/

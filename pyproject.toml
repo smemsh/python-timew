@@ -22,6 +22,7 @@ classifiers = [
 Issues = "https://github.com/smemsh/python-timew/issues/"
 Homepage = "https://github.com/smemsh/python-timew/"
 Repository = "https://github.com/smemsh/python-timew/"
+Documentation = "https://github.com/smemsh/python-timew/docs/api/modules.rst"
 
 [tool.setuptools.dynamic]
 dependencies = { file = ["requirements.in"] }
