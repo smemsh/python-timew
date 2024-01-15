@@ -2,7 +2,10 @@
 
 LIB := timew
 PYBASE := python3.9
-VERSION := 0.1.0
+VERSION := $(shell \
+	numpat='\d+\.\d+\.\d+'; \
+	grep -P -m1 "^version\\s+=\\s+\"$$numpat\"\$$" pyproject.toml \
+	| grep -oP "$$numpat")
 
 REQIN = requirements.in
 REQOUT = requirements.txt
