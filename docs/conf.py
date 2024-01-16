@@ -12,8 +12,6 @@ extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.doctest',
     'sphinx.ext.napoleon',
-    'sphinx.ext.todo',
-    'sphinx.ext.viewcode',
     'sphinxcontrib.apidoc',
     'sphinxcontrib.restbuilder',
 ]
@@ -23,7 +21,6 @@ master_doc = 'index'
 language = None
 exclude_patterns = []
 pygments_style = 'sphinx'
-todo_include_todos = True
 
 apidoc_module_dir = '../timew'
 apidoc_output_dir = '.'
