@@ -91,7 +91,7 @@ Examples
  Total               0:00:00
 
 
-Contributing to timew
+Contributing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Report bugs, submit inquiries, or request features via `<issues>`_.
@@ -103,3 +103,36 @@ assets.
 
 The build environment and tools will contain themselves in a venv within
 the source tree, and should not pollute your system.
+
+
+Commits
+------------------------------------------------------------------------------
+
+Use the following format for commit messages::
+
+  X subsystem: summary description of change
+
+  long description text paragraphs
+  ...
+
+where X is a single character from the following:
+
+==== ====================
+ /    fix
+ ^    removal
+ \-   task/chore
+ \+   feature/new
+ =    comment/code-equal
+==== ====================
+
+All text should [usually] be wrapped by 79 characters, especially the
+summary line.
+
+For subsystem, use your best judgement, and look at previous commits
+with `git log --oneline` to get an idea and for consistency with
+previous changes.  More than one level of subsystem can make sense.
+
+Please use interactive rebase to make commits look nice and have one
+logical change each, with no merge commits.
+
+Thanks.
