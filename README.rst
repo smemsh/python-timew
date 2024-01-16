@@ -103,24 +103,3 @@ assets.
 
 The build environment and tools will contain themselves in a venv within
 the source tree, and should not pollute your system.
-
-
-Code formatting
-------------------------------------------------------------------------------
-
-To avoid bikeshedding_ about code formatting, we use the following tools
-to format our code in a deterministic way:
-
-- isort_ for organizing imports
-- Black_ for code formatting
-
-Our CI pipeline will fail on code that does not conform. To check your
-code, run ``tox`` in your local environment.
-
-We recommend that you configure your favorite editor to run these
-commands on a shortcut. Here__ is an example of my Emacs configuration
-
-.. _bikeshedding: https://en.wiktionary.org/wiki/bikeshedding
-.. _isort: https://github.com/timothycrosley/isort
-.. _Black: https://github.com/ambv/black
-.. __: https://github.com/tjaartvdwalt/emacs-config/blob/master/load.d/init-python.el#L16-L20
