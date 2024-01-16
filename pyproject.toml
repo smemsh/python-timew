@@ -1,16 +1,12 @@
-[build-system]
-requires = [ "setuptools",]
-build-backend = "setuptools.build_meta"
+#
 
 [project]
-name = "timew"
-version = "0.1.0"
-requires-python = ">= 3.9"
-dynamic = ["dependencies", "optional-dependencies",]
-description = "Python bindings for your timewarrior database"
-readme = "README.rst"
-keywords = [ "timewarrior",]
-authors = [
+name        = "timew"
+version     = "0.1.0"
+readme      = "README.rst"
+keywords    = ["timewarrior",]
+dynamic     = ["dependencies", "optional-dependencies",]
+authors     = [
     {name = "Tjaart van der Walt", email = "tjaart@tjaart.org"},
     {name = "Scott Mcdermott", email = "scott@smemsh.net"},
 ]
@@ -20,6 +16,12 @@ classifiers = [
     "Operating System :: POSIX",
     "License :: OSI Approved :: MIT License",
 ]
+description = "Python bindings for your timewarrior database"
+requires-python = ">= 3.9"
+
+[build-system]
+requires = [ "setuptools",]
+build-backend = "setuptools.build_meta"
 
 [project.urls]
 Issues = "https://github.com/smemsh/python-timew/issues/"
