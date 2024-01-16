@@ -94,6 +94,16 @@ Examples
 Contributing to timew
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Report bugs, submit inquiries, or request features via `<issues>`_.
+
+Please submit a `pull request <pulls>`_ for modifications.  Make sure
+the ``dist``, ``test`` and ``docs`` Makefile targets work.  Docs need to
+be kept generated during development, because they are checked in
+assets.
+
+The build environment and tools will contain themselves in a venv within
+the source tree, and should not pollute your system.
+
 
 Code formatting
 ------------------------------------------------------------------------------
