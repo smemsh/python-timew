@@ -39,12 +39,17 @@ timew.timewarrior module
          *  **tags** (*list*, *optional*) – dump only events with
             matching tag(s)
 
-      Returns a list of database entries formatted like the following
-      [ {“id” : 1,”start”:”20190123T092300Z”,”tags”:[“watering new
-      plants”,”gardening”]}, {“id” :
-      2,”start”:”20190123T085000Z”,”end”:”20190123T092256Z”,”tags”:[“helped
-      plant roses”,”gardening”]} ] the above contains a started (but
-      not ended) entry with id=1; and an ended entry with id=2
+      Returns a list of database entries formatted like the following:
+
+      ::
+
+         [{"id": 1, "start": "20190123T092300Z",
+           "tags": ["watering new plants","gardening"]},
+          {"id" : 2, "start": "20190123T085000Z", "end": "20190123T092256Z",
+           "tags": ["helped plant roses","gardening"]}]
+
+      the above contains a started (but not ended) entry with id=1;
+      and an ended entry with id=2
 
    **join(id1, id2)**
 
@@ -78,12 +83,17 @@ timew.timewarrior module
          *  **end_time** (*datetime*, *optional*) – start of interval
             to list entries for.
 
-      Returns a list of database entries formatted like the following
-      [ {“id” : 1,”start”:”20190123T092300Z”,”tags”:[“watering new
-      plants”,”gardening”]}, {“id” :
-      2,”start”:”20190123T085000Z”,”end”:”20190123T092256Z”,”tags”:[“helped
-      plant roses”,”gardening”]} ] the above contains a started (but
-      not ended) entry with id=1; and an ended entry with id=2
+      Returns a list of database entries formatted like the following:
+
+      ::
+
+         [{"id": 1, "start": "20190123T092300Z",
+           "tags": ["watering new plants","gardening"]},
+          {"id" : 2, "start": "20190123T085000Z", "end": "20190123T092256Z",
+           "tags": ["helped plant roses","gardening"]}]
+
+      the above contains a started (but not ended) entry with id=1;
+      and an ended entry with id=2
 
    **modify(start_or_end, id, time)**
 
@@ -157,12 +167,17 @@ timew.timewarrior module
          *  **end_time** (*datetime*, *optional*) – start of interval
             to list entries for.
 
-      Returns a list of database entries formatted like the following
-      [ {“id” : 1,”start”:”20190123T092300Z”,”tags”:[“watering new
-      plants”,”gardening”]}, {“id” :
-      2,”start”:”20190123T085000Z”,”end”:”20190123T092256Z”,”tags”:[“helped
-      plant roses”,”gardening”]} ] the above contains a started (but
-      not ended) entry with id=1; and an ended entry with id=2
+      Returns a list of database entries formatted like the following:
+
+      ::
+
+         [{"id": 1, "start": "20190123T092300Z",
+           "tags": ["watering new plants","gardening"]},
+          {"id" : 2, "start": "20190123T085000Z", "end": "20190123T092256Z",
+           "tags": ["helped plant roses","gardening"]}]
+
+      the above contains a started (but not ended) entry with id=1;
+      and an ended entry with id=2
 
    **tag(id, tags)**
 

@@ -98,11 +98,13 @@ class TimeWarrior:
             end_time (datetime, optional): end of interval to list entries for.
             tags (list, optional): dump only events with matching tag(s)
 
-        Returns a list of database entries formatted like the following
-        [
-        {"id" : 1,"start":"20190123T092300Z","tags":["watering new plants","gardening"]},
-        {"id" : 2,"start":"20190123T085000Z","end":"20190123T092256Z","tags":["helped plant roses","gardening"]}
-        ]
+        Returns a list of database entries formatted like the following::
+
+          [{"id": 1, "start": "20190123T092300Z",
+            "tags": ["watering new plants","gardening"]},
+           {"id" : 2, "start": "20190123T085000Z", "end": "20190123T092256Z",
+            "tags": ["helped plant roses","gardening"]}]
+
         the above contains a started (but not ended) entry with id=1; and an ended entry with id=2
         """
 
@@ -127,11 +129,13 @@ class TimeWarrior:
             start_time (datetime, optional): start of interval to list entries for.
             end_time (datetime, optional): start of interval to list entries for.
 
-        Returns a list of database entries formatted like the following
-        [
-        {"id" : 1,"start":"20190123T092300Z","tags":["watering new plants","gardening"]},
-        {"id" : 2,"start":"20190123T085000Z","end":"20190123T092256Z","tags":["helped plant roses","gardening"]}
-        ]
+        Returns a list of database entries formatted like the following::
+
+          [{"id": 1, "start": "20190123T092300Z",
+            "tags": ["watering new plants","gardening"]},
+           {"id" : 2, "start": "20190123T085000Z", "end": "20190123T092256Z",
+            "tags": ["helped plant roses","gardening"]}]
+
         the above contains a started (but not ended) entry with id=1; and an ended entry with id=2
         """
 
@@ -158,11 +162,13 @@ class TimeWarrior:
             start_time (datetime, optional): start of interval to list entries for.
             end_time (datetime, optional): start of interval to list entries for.
 
-        Returns a list of database entries formatted like the following
-        [
-        {"id" : 1,"start":"20190123T092300Z","tags":["watering new plants","gardening"]},
-        {"id" : 2,"start":"20190123T085000Z","end":"20190123T092256Z","tags":["helped plant roses","gardening"]}
-        ]
+        Returns a list of database entries formatted like the following::
+
+          [{"id": 1, "start": "20190123T092300Z",
+            "tags": ["watering new plants","gardening"]},
+           {"id" : 2, "start": "20190123T085000Z", "end": "20190123T092256Z",
+            "tags": ["helped plant roses","gardening"]}]
+
         the above contains a started (but not ended) entry with id=1; and an ended entry with id=2
         """
         return self.list(start_time, end_time)
