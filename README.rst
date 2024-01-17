@@ -1,5 +1,12 @@
-timew - Python API for Timewarrior
+python-timew
 ==============================================================================
+
+A Python API for Timewarrior, originally by Tjaart van der Walt
+`@tjaartvdwalt`__, now maintained here.  Archived original is
+`on gitlab`__.
+
+.. __: https://github.com/tjaartvdwalt/
+.. __: https://gitlab.com/tjaart/python-timew
 
 
 Installation
