@@ -149,3 +149,16 @@ def test_track(timew):
         "tag 1",
         "tag 2",
     ]
+
+
+def test_export(timew):
+    assert timew.export(ids=[7, 14, 18],) == [
+        TWBIN, 'export', '@7', '@14', '@18'
+    ]
+    with raises(ValueError):
+        assert timew.export(
+            ids=[1, 2, 3],
+            start_time=datetime(2018, 8, 15, 9, 0, 0),
+        )
+    with raises(ValueError):
+        assert timew.export(ids=[1, 2, 3], tags=['foo'])

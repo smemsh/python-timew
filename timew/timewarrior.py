@@ -90,10 +90,13 @@ class TimeWarrior:
         """
         return self.__execute("shorten", f"@{id}", f"{str(duration)}")
 
-    def export(self, start_time=None, end_time=None, tags=None):
-        """export the timewarrior entries with optional tags and for optional interval
+    def export(self, ids=None, start_time=None, end_time=None, tags=None):
+        """export timewarrior entries by list of integer IDs, """ \
+        """or with optional tags and for optional interval, """ \
+        """default all entries in the database
 
         Args:
+            intervals (list[int], optional): list of IDs to export, exclusive of other options
             start_time (datetime, optional): start of interval to list entries for.
             end_time (datetime, optional): end of interval to list entries for.
             tags (list, optional): dump only events with matching tag(s)
@@ -106,13 +109,23 @@ class TimeWarrior:
             "tags": ["helped plant roses","gardening"]}]
 
         the above contains a started (but not ended) entry with id=1; and an ended entry with id=2
+
         """
+        cmd = ['export']
+
+        if ids is not None:
+            if start_time or end_time or tags:
+                raise ValueError("ids can only be specified exclusively")
+            if type(ids) is not list:
+                raise ValueError("ids must be provided as a list")
+            if not all([type(i) is int for i in ids]):
+                raise ValueError("provided ids must all be integers")
+        cmd += [f"@{id}" for id in ids]
 
         interval = None
         if start_time:
             interval = Interval(start_time=start_time, end_time=end_time)
 
-        cmd = ['export']
         if interval: cmd += interval.args
         if tags: cmd += tags
 

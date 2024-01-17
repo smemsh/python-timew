@@ -24,12 +24,16 @@ timew.timewarrior module
       :Parameters:
          **id** (*int*) – The Timewarrior id to be deleted
 
-   **export(start_time=None, end_time=None, tags=None)**
+   **export(ids=None, start_time=None, end_time=None, tags=None)**
 
-      export the timewarrior entries with optional tags and for
-      optional interval
+      export timewarrior entries by list of integer IDs, or with
+      optional tags and for optional interval, default all entries in
+      the database
 
       :Parameters:
+         *  **intervals** (*list* [*int*], *optional*) – list of IDs
+            to export, exclusive of other options
+
          *  **start_time** (*datetime*, *optional*) – start of
             interval to list entries for.
 
