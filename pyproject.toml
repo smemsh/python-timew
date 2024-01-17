@@ -16,7 +16,7 @@ classifiers = [
     "Operating System :: POSIX",
     "License :: OSI Approved :: MIT License",
 ]
-description = "Python bindings for your timewarrior database"
+description = "Python interface to your timewarrior database"
 requires-python = ">= 3.9"
 
 [build-system]
