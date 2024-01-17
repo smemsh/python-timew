@@ -94,15 +94,17 @@ Examples
 Contributing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Report bugs, submit inquiries, or request features via `<issues>`_.
+Report bugs, submit inquiries, or request features via `issues`__.
 
-Please submit a `pull request <pulls>`_ for modifications.  Make sure
-the ``dist``, ``test`` and ``docs`` Makefile targets work.  Docs need to
-be kept generated during development, because they are checked in
-assets.
+Please submit a `pull request`__ for modifications.  Make sure the
+``dist``, ``test`` and ``docs`` Makefile targets work.  Docs need to be
+kept generated during development, because they are checked in assets.
 
 The build environment and tools will contain themselves in a venv within
 the source tree, and should not pollute your system.
+
+.. __: https://github.com/smemsh/python-timew/issues/
+.. __: https://github.com/smemsh/python-timew/pulls/
 
 
 Commits
