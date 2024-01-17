@@ -58,10 +58,24 @@ class PyTimewRstTranslator(RstTranslator):
 
     def visit_literal_emphasis(self, node):
         t = node.astext()
+
+        # emphasize only whole words, sometimes sphinx calls us with spaces
         if t.startswith(' ') or t.endswith(' '): pass
+
+        # list[str] will try to emphasize 'list', '[', 'str', and ']'
+        # which results in: "*list**[**str**]*" which bombs
+        # however "*list*[*str*]" also doesn't work
+        # we want "*list* [*str*]" which does render
+        #
+        elif t == '[': self.add_text(' ')
+        elif t == ']': pass
         else: self.add_text('*')
+
     def depart_literal_emphasis(self, node):
-        self.visit_literal_emphasis(node)
+        t = node.astext()
+        if t.startswith(' ') or t.endswith(' '): pass
+        elif t == '[' or t == ']': pass
+        else: self.add_text('*')
 
 
 def setup(app):

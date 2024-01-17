@@ -133,8 +133,8 @@ timew.timewarrior module
       :Parameters:
          *  **time** (*datetime*) – The time to start the interval
 
-         *  **tags** (*list<str>*) – The list of tags to apply to the
-            interval
+         *  **tags** (*list* [*str*]) – The list of tags to apply to
+            the interval
 
    **stop(tags=None)**
 
@@ -189,7 +189,7 @@ timew.timewarrior module
          *  **duration** (*timew.Timedelta*, *optional*) – The task
             duration. (required if task not given)
 
-         *  **tags** (*list* of *string*) – The tags
+         *  **tags** (*list* [*str*]) – The tags
 
       :Raises:
          **TimewarriorError** – Timew command errors
