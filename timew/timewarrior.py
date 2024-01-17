@@ -90,7 +90,7 @@ class TimeWarrior:
         """
         return self.__execute("shorten", f"@{id}", f"{str(duration)}")
 
-    def export(self, start_time=None, end_time=datetime.now(), tags=None):
+    def export(self, start_time=None, end_time=None, tags=None):
         """export the timewarrior entries with optional tags and for optional interval
 
         Args:
@@ -120,7 +120,7 @@ class TimeWarrior:
 
         return json.loads(out[0])
 
-    def list(self, start_time=None, end_time=datetime.now()):
+    def list(self, start_time=None, end_time=None):
         """export the timewarrior entries for interval
 
         Args:
@@ -177,7 +177,7 @@ class TimeWarrior:
         """
         return self.__execute("split", f"@{id}")
 
-    def start(self, time=datetime.now(), tags=None):
+    def start(self, time=None, tags=None):
         """Begins tracking using the current time with any specified set of tags.
 
         Args:
@@ -185,6 +185,8 @@ class TimeWarrior:
             tags (list<str>): The list of tags to apply to the interval
 
         """
+        if time is None:
+            time = datetime.now()
         args = ["start", self.__strfdatetime(time)]
         if tags:
             for tag in tags:
