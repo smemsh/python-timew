@@ -120,7 +120,7 @@ class TimeWarrior:
                 raise ValueError("ids must be provided as a list")
             if not all([type(i) is int for i in ids]):
                 raise ValueError("provided ids must all be integers")
-        cmd += [f"@{id}" for id in ids]
+            cmd += [f"@{id}" for id in ids]
 
         interval = None
         if start_time:

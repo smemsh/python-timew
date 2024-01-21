@@ -2,7 +2,7 @@
 
 [project]
 name        = "timew"
-version     = "0.1.0"
+version     = "0.1.1"
 readme      = "README.rst"
 keywords    = ["timewarrior",]
 dynamic     = ["dependencies", "optional-dependencies",]
