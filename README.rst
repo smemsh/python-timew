@@ -27,9 +27,9 @@ the repository and can be previewed online.
 The timewarrior__ module contains the interesting docs, while the formal
 doctree are rendered to an index__ and a more concise modules__ file.
 
-.. __: docs/api/timew.timewarrior.rst
-.. __: docs/api/index.rst
-.. __: docs/api/modules.rst
+.. __: https://github.com/smemsh/python-timew/blob/master/docs/api/timew.timewarrior.rst
+.. __: https://github.com/smemsh/python-timew/blob/master/docs/api/index.rst
+.. __: https://github.com/smemsh/python-timew/blob/master/docs/api/modules.rst
 
 
 
