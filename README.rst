@@ -13,7 +13,7 @@ Installation is easy from the `Python Package Index`__
 
  pip install timew
 
-.. __: https://taskwarrior.org/docs/timewarrior/download.html
+.. __: https://github.com/GothenburgBitFactory/timewarrior
 .. __: https://pypi.org/project/timew/
 
 
