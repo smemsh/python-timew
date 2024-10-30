@@ -2,10 +2,9 @@
 
 [project]
 name        = "timew"
-version     = "0.1.1"
 readme      = "README.rst"
 keywords    = ["timewarrior",]
-dynamic     = ["dependencies", "optional-dependencies",]
+dynamic     = ["version", "dependencies", "optional-dependencies",]
 authors     = [
     {name = "Tjaart van der Walt", email = "tjaart@tjaart.org"},
     {name = "Scott Mcdermott", email = "scott@smemsh.net"},
@@ -35,6 +34,10 @@ optional-dependencies.dev = { file = ["requirements-dev.txt"] }
 
 [tool.setuptools.packages]
 find = {namespaces = false}
+
+[tool.setuptools_scm]
+version_scheme = "only-version"
+local_scheme = "no-local-version"
 
 [tool.pytest.ini_options]
 minversion = "6.0"

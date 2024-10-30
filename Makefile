@@ -3,10 +3,16 @@
 LIB := timew
 PYBASE := python3.12
 
+SHELL := /bin/bash
 VERSION := $(shell \
-	numpat='\d+\.\d+\.\d+'; \
-	grep -P -m1 "^version\\s+=\\s+\"$$numpat\"\$$" pyproject.toml \
-	| grep -oP "$$numpat")
+	ver=$$($(PYBASE) -m setuptools_scm -q version); \
+	major=$${ver%%.*}; \
+	rest=$${ver#*.}; \
+	minor=$${rest%%.*}; \
+	rest=$${rest#*.}; \
+	patch=$${rest%%.*}; \
+	echo $$major.$$minor.$$patch; \
+	:; )
 
 REQIN = requirements.in
 REQOUT = requirements.txt
@@ -65,5 +71,9 @@ clean: cleandoc
 	rm -rf build venv dist $(LIB).egg-info
 
 rebuild: clean sdist wheel
+
+vartest:
+	@echo shell: $(SHELL)
+	@echo version: $(VERSION)
 
 .PHONY: wheel sdist test docs sync pkgup reqs devreqs clean cleandoc rebuild
