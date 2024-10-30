@@ -1,7 +1,8 @@
 #
 
 LIB := timew
-PYBASE := python3.9
+PYBASE := python3.12
+
 VERSION := $(shell \
 	numpat='\d+\.\d+\.\d+'; \
 	grep -P -m1 "^version\\s+=\\s+\"$$numpat\"\$$" pyproject.toml \
