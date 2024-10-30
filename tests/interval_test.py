@@ -18,6 +18,11 @@ def test_start_stop_string():
     assert str(interval) == "from 20180815T070000 - 20180815T083000"
 
 
+def test_start_only_string():
+    interval = Interval(start_time="2018-08-15T07:00")
+    assert str(interval) == "from 20180815T070000"
+
+
 def test_invalid_duration():
     with raises(IntervalError):
         Interval(start_time="2018-08-15T07:00", duration="Invalid format")

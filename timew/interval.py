@@ -13,7 +13,7 @@ class Interval:
 
     def __init__(self, start_time=None, end_time=None, duration=None):
         """
-        2 of the 3 keyword arguments need to be supplied.
+        at least start_time, and optionally one of end_time or duration must be supplied
         If all 3 are supplied, start_time and end_time takes precedence over duration
 
         Arguments:
@@ -52,9 +52,14 @@ class Interval:
                 "before",
                 f"{end_time.strftime('%Y%m%dT%H%M%S')}",
             ]
+        elif start_time and not end_time and not duration:
+            self.__args = [
+                "from",
+                f"{start_time.strftime('%Y%m%dT%H%M%S')}",
+            ]
         else:
             raise IntervalError(
-                "At least 2 arguments need to be supplied: start time, end time, duration"
+                "start time must be supplied; optional 2nd arg is end time or duration"
             )
 
     @property
