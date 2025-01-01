@@ -15,6 +15,15 @@ class TimeWarrior:
         self.bin = bin
         self.simulate = simulate
 
+    def annotate(self, id, annotation):
+        """Add annotation to an existing interval
+
+        Args:
+            id (int): The Timewarrior id
+            annotation (str): Annotation text to be set
+        """
+        return self.__execute("annotate", f"@{id}", f"{annotation}")
+
     def cancel(self):
         """If there is an open interval, it is abandoned."""
         return self.__execute("cancel")
