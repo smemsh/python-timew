@@ -33,6 +33,9 @@ Submodules
    *  `TimeWarrior
       <timew.timewarrior.rst#timew.timewarrior.TimeWarrior>`_
 
+      *  `TimeWarrior.annotate()
+         <timew.timewarrior.rst#timew.timewarrior.TimeWarrior.annotate>`_
+
       *  `TimeWarrior.cancel()
          <timew.timewarrior.rst#timew.timewarrior.TimeWarrior.cancel>`_
 

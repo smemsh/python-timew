@@ -6,6 +6,15 @@ timew.timewarrior module
 
    Bases: ``object``
 
+   **annotate(id, annotation)**
+
+      Add annotation to an existing interval
+
+      :Parameters:
+         *  **id** (*int*) – The Timewarrior id
+
+         *  **annotation** (*str*) – Annotation text to be set
+
    **cancel()**
 
       If there is an open interval, it is abandoned.

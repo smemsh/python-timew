@@ -164,3 +164,7 @@ def test_export(timew):
     with raises(ValueError):
         assert timew.export(ids=[1, 2, 3], tags=['foo'])
 
+
+def test_annotate(timew):
+    note = 'test annotation including spaces'
+    assert timew.annotate(1, note) == [TWBIN, 'annotate', '@1', note]
